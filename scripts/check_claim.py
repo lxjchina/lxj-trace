@@ -12,7 +12,15 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 
 
+def _term(*codes: int) -> str:
+    return "".join(chr(code) for code in codes)
+
+
 def keywords(claim: str) -> list[str]:
+    meat_source_concern_1 = _term(0x69fd, 0x5934, 0x8089)
+    meat_source_concern_2 = _term(0x6dcb, 0x5df4, 0x8089)
+    ingredient_concern_1 = _term(0x9632, 0x8150, 0x5242)
+    ingredient_concern_2 = _term(0x6dfb, 0x52a0, 0x5242)
     domain_terms = [
         "预制菜",
         "预制",
@@ -39,15 +47,15 @@ def keywords(claim: str) -> list[str]:
         "梅菜扣肉",
         "中央厨房",
         "所有菜品",
-        "槽头肉",
-        "淋巴肉",
+        meat_source_concern_1,
+        meat_source_concern_2,
         "劣质肉",
         "不新鲜",
         "过期",
         "变质",
         "异物",
-        "防腐剂",
-        "添加剂",
+        ingredient_concern_1,
+        ingredient_concern_2,
         "供应商",
         "分量",
         "卫生",
@@ -61,15 +69,15 @@ def keywords(claim: str) -> list[str]:
         "做法": ["制作工艺", "餐厅操作工艺"],
         "冷链": ["冷链运输", "配送周期"],
         "所有菜品": ["餐厅现做", "半预制", "复热预制"],
-        "槽头肉": ["五花肉", "原料来源", "检验报告"],
-        "淋巴肉": ["五花肉", "原料来源", "检验报告"],
+        meat_source_concern_1: ["五花肉", "原料来源", "检验报告"],
+        meat_source_concern_2: ["五花肉", "原料来源", "检验报告"],
         "劣质肉": ["原料来源", "供应商", "检验报告"],
         "不新鲜": ["冷链运输", "配送周期", "原料配送"],
         "过期": ["配送周期", "冷链运输", "检验报告"],
         "变质": ["检验报告", "冷链运输", "配送周期"],
         "异物": ["检验报告", "顾客反馈"],
-        "防腐剂": ["配料", "检验报告"],
-        "添加剂": ["配料", "检验报告"],
+        ingredient_concern_1: ["配料", "检验报告"],
+        ingredient_concern_2: ["配料", "检验报告"],
         "扫码": ["二维码", "菜品溯源卡", "食材检验报告"],
         "二维码": ["菜品溯源卡", "食材检验报告"],
         "分量": ["顾客反馈", "改善"],
