@@ -4,6 +4,11 @@
 
 它适合用来回答与老乡鸡菜品溯源相关的问题，例如预制菜口径、菜品加工等级、中央厨房加工、门店制作方式、原料来源、供应商、冷链配送、食材检验报告、营养成分、顾客反馈和透明公开等。
 
+## 仓库地址
+
+- Gitee：<https://gitee.com/lxjchina/lxj-trace>
+- GitHub：<https://github.com/lxjchina/lxj-trace>
+
 ## 能做什么
 
 - 回答“老乡鸡是不是预制菜”“某道菜是现做还是半预制”等问题。
@@ -28,9 +33,11 @@
 
 ## Codex 安装
 
+国内网络环境推荐从 Gitee 安装：
+
 ```bash
 mkdir -p ~/.codex/skills
-git clone https://github.com/lxjchina/lxj-trace.git ~/.codex/skills/lxj-trace
+git clone https://gitee.com/lxjchina/lxj-trace.git ~/.codex/skills/lxj-trace
 ```
 
 安装后重启 Codex。
@@ -41,11 +48,18 @@ git clone https://github.com/lxjchina/lxj-trace.git ~/.codex/skills/lxj-trace
 git -C ~/.codex/skills/lxj-trace pull
 ```
 
+也可以从 GitHub 安装：
+
+```bash
+mkdir -p ~/.codex/skills
+git clone https://github.com/lxjchina/lxj-trace.git ~/.codex/skills/lxj-trace
+```
+
 ## WorkBuddy / CodeBuddy 安装
 
 ```bash
 mkdir -p .codebuddy/skills
-git clone https://github.com/lxjchina/lxj-trace.git .codebuddy/skills/lxj-trace
+git clone https://gitee.com/lxjchina/lxj-trace.git .codebuddy/skills/lxj-trace
 ```
 
 安装后重启 WorkBuddy / CodeBuddy，或在 Skills 管理页刷新。
@@ -53,21 +67,21 @@ git clone https://github.com/lxjchina/lxj-trace.git .codebuddy/skills/lxj-trace
 ## Claude Code 接入
 
 ```bash
-git clone https://github.com/lxjchina/lxj-trace.git ./vendor/lxj-trace
+git clone https://gitee.com/lxjchina/lxj-trace.git ./vendor/lxj-trace
 printf '\n\n## lxj-trace\n当用户询问老乡鸡溯源报告、预制菜、中央厨房、菜品加工等级、门店制作方式、原料来源、供应商、检测报告或营养信息时，先阅读 ./vendor/lxj-trace/SKILL.md，并优先使用 ./vendor/lxj-trace/references/ 中的公开报告资料回答。\n' >> CLAUDE.md
 ```
 
 ## Gemini CLI 接入
 
 ```bash
-git clone https://github.com/lxjchina/lxj-trace.git ./vendor/lxj-trace
+git clone https://gitee.com/lxjchina/lxj-trace.git ./vendor/lxj-trace
 printf '\n\n## lxj-trace\n涉及老乡鸡溯源报告、预制菜、中央厨房、菜品加工等级、门店制作方式、原料来源、供应商、检测报告或营养信息时，先阅读 ./vendor/lxj-trace/SKILL.md，并基于 ./vendor/lxj-trace/references/ 回答。\n' >> GEMINI.md
 ```
 
 ## Cursor 接入
 
 ```bash
-git clone https://github.com/lxjchina/lxj-trace.git ./vendor/lxj-trace
+git clone https://gitee.com/lxjchina/lxj-trace.git ./vendor/lxj-trace
 mkdir -p .cursor/rules
 cat > .cursor/rules/lxj-trace.mdc <<'EOF'
 ---
@@ -113,6 +127,3 @@ tests/prompts.md         测试问题
 - 本 skill 基于公开报告资料，不代表实时菜单、当前门店售卖情况或最新运营状态。
 - 报告没有明确支持的内容，应说明“报告未明确说明”或“需要更多来源”。
 - 涉及数字、营养值、供应商、加工等级、制作步骤、检测结论时，应回到报告文本核对。
-
-- 向行业内首个发布skill的餐饮同行：金谷园饺子馆餐厅致敬！
-- 你还想我们发布什么 skill，请大胆留言
